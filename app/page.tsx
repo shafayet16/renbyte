@@ -1,5 +1,12 @@
-import Image from "next/image";
+"use client";
+
+import dynamic from "next/dynamic";
 import Link from "next/link";
+
+// Dynamically import 3D Canvas without Server-Side Rendering
+const SkyCanvas = dynamic(() => import("./components/SkyCanvas"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -7,6 +14,9 @@ export default function Home() {
       
       {/* 0. UNIFIED TACTILE SURFACE GRAIN OVERLAY */}
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.12)_1px,transparent_1px)] [background-size:20px_20px] opacity-25 pointer-events-none z-0" />
+
+      {/* 3D R3F SKY ENGINE (CLOUD, GOD-RAYS, MIST, CURSOR PARALLAX) */}
+      <SkyCanvas />
 
       {/* 1. FULL-WIDTH TOP GLASSMORPHISM NAVBAR */}
       <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-white/20 bg-white/10 backdrop-blur-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.35),0_8px_32px_rgba(0,0,0,0.06)]">
@@ -61,14 +71,14 @@ export default function Home() {
       </header>
 
       {/* 2. HERO SECTION (~76% WIDTH) */}
-      <div className="relative flex h-screen w-[76%] items-center justify-start px-12 sm:px-16 lg:px-24 z-10">
+      <div className="relative flex h-screen w-[76%] items-center justify-start px-12 sm:px-16 lg:px-24 z-10 pointer-events-none">
         
         {/* HERO AMBIENT ATMOSPHERIC LIGHTS */}
         <div className="absolute top-1/4 left-1/3 h-[420px] w-[420px] rounded-full bg-violet-400/20 blur-[140px] pointer-events-none" />
         <div className="absolute bottom-1/4 left-10 h-80 w-80 rounded-full bg-cyan-300/20 blur-[120px] pointer-events-none" />
 
         {/* HERO TYPOGRAPHY */}
-        <div className="relative z-10 space-y-3 border-l border-white/30 pl-8 py-2">
+        <div className="relative z-10 space-y-3 border-l border-white/30 pl-8 py-2 pointer-events-auto">
           <h1 className="font-serif text-5xl sm:text-7xl lg:text-8xl font-normal tracking-tight text-white drop-shadow-[0_4px_25px_rgba(0,0,0,0.15)]">
             Renbyte
           </h1>
